@@ -29,18 +29,18 @@ public class UserManager {
     /**
      * Search user by username that store in usersList.
      * @param username username of the user we want to search.
-     * @return a arrayList of all user by the specified username.
+     * @return a user by the specified username.
      */
-    public ArrayList<User> searchByUsername(String username)
+    public User searchByUsername(String username)
     {
-        ArrayList<User> matches = new ArrayList<User>();
+        User user = null;
         for(User u : usersList)
         {
             if(u.getUsername().equalsIgnoreCase(username))
             {
-                matches.add(u);
+                user=u;
             }
         }
-        return matches;
+        return user;
     }
 }
