@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Done UserManager class">
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Add test for UserManager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/business/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/business/UserManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/business/UserManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/asus/Downloads/NetworkProgramming2024-main (8)",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,8 +59,8 @@
       <recent name="business" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserManagerTest.searchByUsername_NotFound">
-    <configuration name="UserManagerTest.addUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserManagerTest">
+    <configuration name="UserManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FilmServer" />
       <extension name="coverage">
         <pattern>
@@ -68,7 +70,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="business" />
       <option name="MAIN_CLASS_NAME" value="business.UserManagerTest" />
-      <option name="METHOD_NAME" value="addUser" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserManagerTest.addUser_Fail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FilmServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="business.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="business" />
+      <option name="MAIN_CLASS_NAME" value="business.UserManagerTest" />
+      <option name="METHOD_NAME" value="addUser_Fail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,10 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserManagerTest" />
         <item itemvalue="JUnit.UserManagerTest.searchByUsername_NotFound" />
         <item itemvalue="JUnit.UserManagerTest.searchByUsername" />
         <item itemvalue="JUnit.UserManagerTest.addUser_Fail_userExist" />
-        <item itemvalue="JUnit.UserManagerTest.addUser" />
+        <item itemvalue="JUnit.UserManagerTest.addUser_Fail" />
       </list>
     </recent_temporary>
   </component>
@@ -141,6 +159,7 @@
       <updated>1711457364853</updated>
       <workItem from="1711457365928" duration="5254000" />
       <workItem from="1711463384312" duration="3905000" />
+      <workItem from="1711856601914" duration="1294000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -166,7 +185,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711503147312</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add test for UserManager">
+      <option name="closed" value="true" />
+      <created>1711856626378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711856626378</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add test for UserManager">
+      <option name="closed" value="true" />
+      <created>1711856645354</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711856645354</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +211,7 @@
     <MESSAGE value="creating repository" />
     <MESSAGE value="Done User class" />
     <MESSAGE value="Done UserManager class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done UserManager class" />
+    <MESSAGE value="Add test for UserManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add test for UserManager" />
   </component>
 </project>

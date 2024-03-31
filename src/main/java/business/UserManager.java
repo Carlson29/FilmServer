@@ -5,6 +5,22 @@ import java.util.HashMap;
 
 public class UserManager {
 
+    private void bootstrapUserList()
+    {
+        User u1 = new User("Olivia", "passworD$123");
+        User u2 = new User("Sean", "passworD$123");
+        User u3 = new User("Lily", "passworD$123");
+        User u4 = new User("Evan", "passworD$123");
+        usersList.add(u1);
+        usersList.add(u2);
+        usersList.add(u3);
+        usersList.add(u4);
+    }
+
+    public UserManager() {
+        bootstrapUserList();
+    }
+
     private final ArrayList<User> usersList = new ArrayList<User>();
 
     /**
