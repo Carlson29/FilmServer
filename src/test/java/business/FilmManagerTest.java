@@ -89,6 +89,7 @@ class FilmManagerTest {
         expected.add(f2);
         expected.add(f3);
        ArrayList <Film> actual= fm.searchByGenre("fiction");
+       assertEquals(expected,actual);
     }
     /**when the genre doesn't genre exist**/
     @Test
@@ -96,5 +97,6 @@ class FilmManagerTest {
         FilmManager fm= new FilmManager();
         ArrayList <Film> expected= new ArrayList<>();
         ArrayList <Film> actual= fm.searchByGenre("play");
+        assertEquals(expected,actual);
     }
 }

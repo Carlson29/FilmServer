@@ -7,6 +7,10 @@ public class FilmManager {
 
     public FilmManager() {
         films = new HashMap<>();
+        bootstrapUserList();
+    }
+    private void bootstrapUserList()
+    {
         Film f1 = new Film("aaa", "fiction", 20, 4);
         Film f2 = new Film("bbb", "horror", 5, 4);
         Film f3 = new Film("ccc", "fiction", 5, 4);
@@ -15,6 +19,7 @@ public class FilmManager {
         films.put(f1.getTitle(), f1);
         films.put(f2.getTitle(), f2);
         films.put(f4.getTitle(), f4);
+
     }
 
     /**
