@@ -3,7 +3,7 @@ package business;
 public class FilmService {
 
     public static final String HOST = "localhost";
-    public static final int PORT = 41900;
+    public static final int PORT = 41235;
     public static final String REGISTER_REQUEST = "register";
     public static final String SUCCESSFUL_REGISTRATION = "ADDED";
     public static final String FAILED_REGISTRATION = "REJECTED";

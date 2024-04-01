@@ -38,8 +38,8 @@ public class FilmServer {
                             switch (action) {
                                 case (FilmService.REGISTER_REQUEST):
                                     response = FilmService.FAILED_REGISTRATION;
-                                    if (components.length == 4) {
-                                        if (components[1].length() == 3) {
+                                    if (components.length == 3) {
+                                        if (components[1].length() >= 3) {
                                             if (CredentialVerification.checkPassword(components[2])) {
                                                 if (userManager.addUser(components[1], components[2])) {
                                                     user = new User(components[1], components[1], 1);
@@ -120,6 +120,17 @@ public class FilmServer {
                                         }
                                     } else {
 
+                                    }
+                                    break;
+                                case (FilmService.SEARCH_FILM_REQUEST):
+                                    if (components.length == 2) {
+                                        Film filmsByTitle = filmManager.searchByTitle(components[1]);
+                                        if (filmsByTitle!=null) {
+                                                response =  filmsByTitle.getTitle() + FilmService.DELIMITER + filmsByTitle.getGenre() + FilmService.DELIMITER + filmsByTitle.getTotalRatings() + FilmService.DELIMITER + filmsByTitle.getNumberOfRatings();
+
+                                        } else {
+                                            response = FilmService.NO_MATCH_FOUND;
+                                        }
                                     }
                                     break;
                                 case (FilmService.SEARCH_FILM_BY_GENRE_REQUEST):
