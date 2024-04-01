@@ -10,6 +10,12 @@ public class Film implements Comparable <Film> {
 
     public Film() {
     }
+    public Film(String title, String genre) {
+        this.title = title;
+        this.genre = genre;
+        this.totalRatings = 0;
+        this.numberOfRatings = 0;
+    }
 
     public Film(String title, String genre, int totalRatings, int numberOfRatings) {
         this.title = title;
