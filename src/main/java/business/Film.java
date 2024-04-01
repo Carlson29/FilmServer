@@ -6,7 +6,7 @@ public class Film implements Comparable <Film> {
  private String title;
  private String genre;
  private double totalRatings;
- private int numberOfRatings;
+ private int numberOfRaters;
 
     public Film() {
     }
@@ -14,14 +14,14 @@ public class Film implements Comparable <Film> {
         this.title = title;
         this.genre = genre;
         this.totalRatings = 0;
-        this.numberOfRatings = 0;
+        this.numberOfRaters = 0;
     }
 
-    public Film(String title, String genre, int totalRatings, int numberOfRatings) {
+    public Film(String title, String genre, int totalRatings, int numberOfRaters) {
         this.title = title;
         this.genre = genre;
         this.totalRatings = totalRatings;
-        this.numberOfRatings = numberOfRatings;
+        this.numberOfRaters = numberOfRaters;
     }
 
     public String getTitle() {
@@ -48,12 +48,12 @@ public class Film implements Comparable <Film> {
         this.totalRatings = totalRatings;
     }
 
-    public int getNumberOfRatings() {
-        return numberOfRatings;
+    public int getNumberOfRaters() {
+        return numberOfRaters;
     }
 
-    public void setNumberOfRatings(int numberOfRatings) {
-        this.numberOfRatings = numberOfRatings;
+    public void setNumberOfRaters(int numberOfRaters) {
+        this.numberOfRaters = numberOfRaters;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class Film implements Comparable <Film> {
                 "title='" + title + '\'' +
                 ", genre='" + genre + '\'' +
                 ", totalRatings=" + totalRatings +
-                ", numberOfRatings=" + numberOfRatings +
+                ", numberOfRatings=" + numberOfRaters +
                 '}';
     }
 

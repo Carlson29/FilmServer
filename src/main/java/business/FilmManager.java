@@ -66,8 +66,8 @@ public class FilmManager {
         if (films.containsKey(title)) {
             Film film = films.get(title);
             double ratings = film.getTotalRatings() + rating;
-            film.setNumberOfRatings(film.getNumberOfRatings() + 1);
-            film.setTotalRatings(ratings / film.getNumberOfRatings());
+            film.setNumberOfRaters(film.getNumberOfRaters() + 1);
+            film.setTotalRatings(ratings / film.getNumberOfRaters());
             films.put(title, film);
             return true;
         }

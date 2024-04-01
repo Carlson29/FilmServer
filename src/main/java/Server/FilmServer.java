@@ -126,7 +126,7 @@ public class FilmServer {
                                     if (components.length == 2) {
                                         Film filmsByTitle = filmManager.searchByTitle(components[1]);
                                         if (filmsByTitle!=null) {
-                                                response =  filmsByTitle.getTitle() + FilmService.DELIMITER + filmsByTitle.getGenre() + FilmService.DELIMITER + filmsByTitle.getTotalRatings() + FilmService.DELIMITER + filmsByTitle.getNumberOfRatings();
+                                                response =  filmsByTitle.getTitle() + FilmService.DELIMITER + filmsByTitle.getGenre() + FilmService.DELIMITER + filmsByTitle.getTotalRatings() + FilmService.DELIMITER + filmsByTitle.getNumberOfRaters();
 
                                         } else {
                                             response = FilmService.NO_MATCH_FOUND;
@@ -139,7 +139,7 @@ public class FilmServer {
                                         if (!filmsByGenre.isEmpty()) {
                                             response = "";
                                             for (Film film : filmsByGenre) {
-                                                response = response + "*" + film.getTitle() + FilmService.DELIMITER + film.getGenre() + FilmService.DELIMITER + film.getTotalRatings() + FilmService.DELIMITER + film.getNumberOfRatings();
+                                                response = response + "*" + film.getTitle() + FilmService.DELIMITER + film.getGenre() + FilmService.DELIMITER + film.getTotalRatings() + FilmService.DELIMITER + film.getNumberOfRaters();
                                             }
 
                                         } else {
