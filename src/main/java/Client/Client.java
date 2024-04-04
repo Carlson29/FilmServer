@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -60,8 +61,7 @@ public class Client {
         System.out.println("6) Search all film by genre");
         System.out.println("7) Add a film");
         System.out.println("8) Remove a film");
-        System.out.println("9) Rate a film");
-        System.out.println("10) Shut down server");
+        System.out.println("9) Shut down server");
     }
 
     public static String generateRequest(Scanner userInput){
@@ -75,6 +75,7 @@ public class Client {
             String username = null;
             String password = null;
             String title = null;
+            String genre = null;
 
             switch (choice) {
                 case "0":
@@ -94,7 +95,27 @@ public class Client {
                     break;
                 case "4":
                     rating = getValidRating(userInput,"Rating a film from 1 to 10");
-                    request = FilmService.RATE_FILM_REQUEST + title + rating;
+                    request = FilmService.RATE_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + rating;
+                    break;
+                case "5":
+                    System.out.println("Search film by title: ");
+                    request = FilmService.SEARCH_FILM_REQUEST + FilmService.DELIMITER + title;
+                    break;
+                case "6":
+                    System.out.println("Search film by genre: ");
+                    request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
+                    break;
+                case "7":
+                    System.out.println("Add a film: ");
+                    request = FilmService.ADD_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + genre;
+                    break;
+                case "8":
+                    System.out.println("Remove a film: ");
+                    request = FilmService.REMOVE_FILM_REQUEST + FilmService.DELIMITER + title;
+                    break;
+                case "9":
+                    System.out.println("Shut down server?");
+                    request = FilmService.SHUTDOWN_REQUEST;
                     break;
                 default:
                     System.out.println("Please select one of the stated options!");
