@@ -48,4 +48,18 @@ public class Client {
         }
         // Close connection to server
     }
+
+    public static void displayMenu(){
+        System.out.println("0) Exit");
+        System.out.println("1) Register");
+        System.out.println("2) Login");
+        System.out.println("3) Logout");
+        System.out.println("4) Rate a film");
+        System.out.println("5) Search film by name");
+        System.out.println("6) Search all film by genre");
+        System.out.println("7) Add a film");
+        System.out.println("8) Remove a film");
+        System.out.println("9) Rate a film");
+        System.out.println("10) Shut down server");
+    }
 }
