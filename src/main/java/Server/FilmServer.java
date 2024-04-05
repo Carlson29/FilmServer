@@ -43,7 +43,7 @@ public class FilmServer {
                                             if (CredentialVerification.checkPassword(components[2])) {
                                                 if (userManager.addUser(components[1], components[2])) {
                                                     user = new User(components[1], components[1], 1);
-                                                    response = FilmService.SUCCESSFUL_REGISTRATION;
+                                                    response = FilmService. SUCCESSFUL_REGISTRATION;
                                                 } else {
                                                     System.out.println("user already exist");
                                                 }

@@ -71,11 +71,11 @@ public class Client {
         while(!valid) {
             displayMenu();
             String choice = userInput.nextLine();
-            int rating = 0;
-            String username = null;
-            String password = null;
-            String title = null;
-            String genre = null;
+            int rating;
+            String username;
+            String password ;
+            String title ;
+            String genre ;
 
             switch (choice) {
                 case "0":
@@ -84,10 +84,14 @@ public class Client {
                     break;
                 case "1":
                     System.out.println("Please enter username and password to register: ");
+                    username = userInput.nextLine();
+                    password = userInput.nextLine();
                     request = FilmService.REGISTER_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
                     break;
                 case "2":
                     System.out.println("Please enter username and password to login: ");
+                    username = userInput.nextLine();
+                    password = userInput.nextLine();
                     request = FilmService.LOGIN_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
                     break;
                 case "3":
@@ -95,22 +99,28 @@ public class Client {
                     break;
                 case "4":
                     rating = getValidRating(userInput,"Rating a film from 1 to 10");
+                    title = userInput.nextLine();
                     request = FilmService.RATE_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + rating;
                     break;
                 case "5":
                     System.out.println("Search film by title: ");
+                    title = userInput.nextLine();
                     request = FilmService.SEARCH_FILM_REQUEST + FilmService.DELIMITER + title;
                     break;
                 case "6":
                     System.out.println("Search film by genre: ");
+                    genre = userInput.nextLine();
                     request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
                     break;
                 case "7":
                     System.out.println("Add a film: ");
+                    title = userInput.nextLine();
+                    genre = userInput.nextLine();
                     request = FilmService.ADD_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + genre;
                     break;
                 case "8":
                     System.out.println("Remove a film: ");
+                    title = userInput.nextLine();
                     request = FilmService.REMOVE_FILM_REQUEST + FilmService.DELIMITER + title;
                     break;
                 case "9":

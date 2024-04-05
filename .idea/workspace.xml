@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Add GenerateRequest in client">
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Add more case in GenerateRequest in client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,33 @@
       <recent name="business" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserManagerTest">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.Client" />
+      <module name="FilmServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilmServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.FilmServer" />
+      <module name="FilmServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FilmServer" />
       <extension name="coverage">
@@ -70,38 +97,6 @@
       <option name="PACKAGE_NAME" value="business" />
       <option name="MAIN_CLASS_NAME" value="business.UserManagerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserManagerTest.addUser_Fail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FilmServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="business.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="business" />
-      <option name="MAIN_CLASS_NAME" value="business.UserManagerTest" />
-      <option name="METHOD_NAME" value="addUser_Fail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserManagerTest.addUser_Fail_userExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FilmServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="business.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="business" />
-      <option name="MAIN_CLASS_NAME" value="business.UserManagerTest" />
-      <option name="METHOD_NAME" value="addUser_Fail_userExist" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.FilmServer" />
         <item itemvalue="JUnit.UserManagerTest" />
         <item itemvalue="JUnit.UserManagerTest.searchByUsername_NotFound" />
         <item itemvalue="JUnit.UserManagerTest.searchByUsername" />
-        <item itemvalue="JUnit.UserManagerTest.addUser_Fail_userExist" />
-        <item itemvalue="JUnit.UserManagerTest.addUser_Fail" />
       </list>
     </recent_temporary>
   </component>
@@ -158,7 +153,7 @@
       <updated>1711457364853</updated>
       <workItem from="1711457365928" duration="5254000" />
       <workItem from="1711463384312" duration="3905000" />
-      <workItem from="1711856601914" duration="12607000" />
+      <workItem from="1711856601914" duration="19939000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -224,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712235358163</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add more case in GenerateRequest in client">
+      <option name="closed" value="true" />
+      <created>1712240916879</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712240916879</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +241,7 @@
     <MESSAGE value="Update test and add bootstrapUserList" />
     <MESSAGE value="Add display menu" />
     <MESSAGE value="Add GenerateRequest in client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GenerateRequest in client" />
+    <MESSAGE value="Add more case in GenerateRequest in client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more case in GenerateRequest in client" />
   </component>
 </project>
