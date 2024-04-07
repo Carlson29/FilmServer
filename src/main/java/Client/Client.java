@@ -11,10 +11,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Client {
+    private static boolean loggedIn;
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
+        boolean validClient = true;
+        loggedIn = false;
+        while(validClient){
         // Requests a connection
-        try (Socket dataSocket = new Socket(FilmService.HOST,FilmService.PORT)) {
+        try (Socket dataSocket = new Socket(FilmService.HOST, FilmService.PORT)) {
 
             // Sets up communication lines
             // Create a Scanner to receive messages
@@ -23,12 +27,13 @@ public class Client {
                  PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
                 boolean validSession = true;
                 // Repeated:
-                while(validSession) {
+                while (validSession) {
                     // Ask user for information to be sent
                     System.out.println("Please enter a message to be sent (Send EXIT to end):");
                     String message = generateRequest(userInput);
-                    // Send message to server
-                    output.println(message);
+                    if (message!=null){
+                        // Send message to server
+                        output.println(message);
                     // Flush message through to server
                     output.flush();
 
@@ -36,9 +41,23 @@ public class Client {
                     String response = input.nextLine();
                     // Display result to user
                     System.out.println("Received from server: " + response);
-                    /*if(response.equals(FilmService.EXIT_RESPONSE)){
+                    if (response.equals(FilmService.SUCCESSFUL_LOGOUT_RESPONSE)) {
                         validSession = false;
-                    }*/
+                        loggedIn = false;
+                    }
+                    if (response.equals(FilmService.SUCCESSFUL_SHUTDOWN_RESPONSE)) {
+                        loggedIn = false;
+                        validSession = false;
+                        validClient = false;
+                    }
+                    if (response.equals(FilmService.EXIT_RESPONSE)) {
+                        loggedIn = false;
+                        validSession = false;
+                    }
+                    if (response.equals(FilmService.SUCCESSFUL_ADMIN_LOGIN) || response.equals(FilmService.SUCCESSFUL_USER_LOGIN)) {
+                        loggedIn = true;
+                    }
+                }
                 }
 
             }
@@ -48,20 +67,28 @@ public class Client {
         } catch (IOException e) {
             System.out.println("An IO Exception occurred: " + e.getMessage());
         }
+    }
         // Close connection to server
     }
 
     public static void displayMenu(){
         System.out.println("0) Exit");
-        System.out.println("1) Register");
-        System.out.println("2) Login");
-        System.out.println("3) Logout");
-        System.out.println("4) Rate a film");
+        if(loggedIn==false) {
+            System.out.println("1) Register");
+            System.out.println("2) Login");
+        }
+        if(loggedIn==true) {
+            System.out.println("3) Logout");
+            System.out.println("4) Rate a film");
+        }
+
         System.out.println("5) Search film by name");
         System.out.println("6) Search all film by genre");
-        System.out.println("7) Add a film");
-        System.out.println("8) Remove a film");
-        System.out.println("9) Shut down server");
+        if(loggedIn==true) {
+            System.out.println("7) Add a film");
+            System.out.println("8) Remove a film");
+            System.out.println("9) Shut down server");
+        }
     }
 
     public static String generateRequest(Scanner userInput){
@@ -83,24 +110,32 @@ public class Client {
                     request = FilmService.EXIT_REQUEST;
                     break;
                 case "1":
-                    System.out.println("Please enter username and password to register: ");
-                    username = userInput.nextLine();
-                    password = userInput.nextLine();
-                    request = FilmService.REGISTER_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
+                    if(loggedIn==false) {
+                        System.out.println("Please enter username and password to register: ");
+                        username = userInput.nextLine();
+                        password = userInput.nextLine();
+                        request = FilmService.REGISTER_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
+                    }
                     break;
                 case "2":
-                    System.out.println("Please enter username and password to login: ");
-                    username = userInput.nextLine();
-                    password = userInput.nextLine();
-                    request = FilmService.LOGIN_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
+                    if(loggedIn==false) {
+                        System.out.println("Please enter username and password to login: ");
+                        username = userInput.nextLine();
+                        password = userInput.nextLine();
+                        request = FilmService.LOGIN_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
+                    }
                     break;
                 case "3":
-                    request = FilmService.LOGOUT_REQUEST;
+                    if(loggedIn==true) {
+                        request = FilmService.LOGOUT_REQUEST;
+                    }
                     break;
                 case "4":
-                    rating = getValidRating(userInput,"Rating a film from 1 to 10");
-                    title = userInput.nextLine();
-                    request = FilmService.RATE_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + rating;
+                    if(loggedIn==true) {
+                        rating = getValidRating(userInput, "Rating a film from 1 to 10");
+                        title = userInput.nextLine();
+                        request = FilmService.RATE_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + rating;
+                    }
                     break;
                 case "5":
                     System.out.println("Search film by title: ");
@@ -113,19 +148,25 @@ public class Client {
                     request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
                     break;
                 case "7":
-                    System.out.println("Add a film: ");
-                    title = userInput.nextLine();
-                    genre = userInput.nextLine();
-                    request = FilmService.ADD_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + genre;
+                    if(loggedIn==true) {
+                        System.out.println("Add a film: ");
+                        title = userInput.nextLine();
+                        genre = userInput.nextLine();
+                        request = FilmService.ADD_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + genre;
+                    }
                     break;
                 case "8":
-                    System.out.println("Remove a film: ");
-                    title = userInput.nextLine();
-                    request = FilmService.REMOVE_FILM_REQUEST + FilmService.DELIMITER + title;
+                    if(loggedIn==true) {
+                        System.out.println("Remove a film: ");
+                        title = userInput.nextLine();
+                        request = FilmService.REMOVE_FILM_REQUEST + FilmService.DELIMITER + title;
+                    }
                     break;
                 case "9":
-                    System.out.println("Shut down server?");
-                    request = FilmService.SHUTDOWN_REQUEST;
+                    if(loggedIn==true) {
+                        System.out.println("Shut down server?");
+                        request = FilmService.SHUTDOWN_REQUEST;
+                    }
                     break;
                 default:
                     System.out.println("Please select one of the stated options!");
