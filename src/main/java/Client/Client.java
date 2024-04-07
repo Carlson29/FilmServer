@@ -111,16 +111,20 @@ public class Client {
                     break;
                 case "1":
                     if(loggedIn==false) {
-                        System.out.println("Please enter username and password to register: ");
+                        System.out.println("Register: ");
+                        System.out.println("Enter username: ");
                         username = userInput.nextLine();
+                        System.out.println("Enter password: ");
                         password = userInput.nextLine();
                         request = FilmService.REGISTER_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
                     }
                     break;
                 case "2":
                     if(loggedIn==false) {
-                        System.out.println("Please enter username and password to login: ");
+                        System.out.println("Login: ");
+                        System.out.println("Enter username: ");
                         username = userInput.nextLine();
+                        System.out.println("Enter password: ");
                         password = userInput.nextLine();
                         request = FilmService.LOGIN_REQUEST + FilmService.DELIMITER + username + FilmService.DELIMITER + password;
                     }
@@ -132,25 +136,30 @@ public class Client {
                     break;
                 case "4":
                     if(loggedIn==true) {
-                        rating = getValidRating(userInput, "Rating a film from 1 to 10");
+                        System.out.println("Enter film title: ");
                         title = userInput.nextLine();
+                        rating = getValidRating(userInput, "Rating film from 1 to 10");
                         request = FilmService.RATE_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + rating;
                     }
                     break;
                 case "5":
                     System.out.println("Search film by title: ");
+                    System.out.println("Enter title: ");
                     title = userInput.nextLine();
                     request = FilmService.SEARCH_FILM_REQUEST + FilmService.DELIMITER + title;
                     break;
                 case "6":
                     System.out.println("Search film by genre: ");
+                    System.out.println("Enter genre: ");
                     genre = userInput.nextLine();
                     request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
                     break;
                 case "7":
                     if(loggedIn==true) {
                         System.out.println("Add a film: ");
+                        System.out.println("Enter title: ");
                         title = userInput.nextLine();
+                        System.out.println("Enter genre: ");
                         genre = userInput.nextLine();
                         request = FilmService.ADD_FILM_REQUEST + FilmService.DELIMITER + title + FilmService.DELIMITER + genre;
                     }
@@ -158,6 +167,7 @@ public class Client {
                 case "8":
                     if(loggedIn==true) {
                         System.out.println("Remove a film: ");
+                        System.out.println("Enter title: ");
                         title = userInput.nextLine();
                         request = FilmService.REMOVE_FILM_REQUEST + FilmService.DELIMITER + title;
                     }
