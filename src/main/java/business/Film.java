@@ -79,6 +79,19 @@ public class Film implements Comparable <Film> {
                 '}';
     }
 
+    public String encode(String delimiter){
+        return this.title + delimiter + this.genre + delimiter + this.totalRatings + delimiter + this.numberOfRaters;
+    }
+
+    public static Film decode(String encoded, String delimiter){
+        String [] components  = encoded.split(delimiter);
+        if(components.length != 4){
+            return null;
+        }
+
+        return new Film(components[0], components[1]);
+    }
+
     @Override
     public int compareTo(Film f) {
       return title.compareTo(f.title);
