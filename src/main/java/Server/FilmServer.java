@@ -17,10 +17,11 @@ public class FilmServer {
     private static boolean serverState;
     private static boolean state;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
         try (ServerSocket listeningSocket = new ServerSocket(FilmService.PORT)) {
-            userManager = new UserManager();
+            handleCase(listeningSocket);
+          /*  userManager = new UserManager();
             filmManager = new FilmManager();
             serverState = true;
             while (serverState) {
@@ -80,7 +81,7 @@ public class FilmServer {
                     }
 
                 }
-            }
+            }*/
         } catch (BindException e) {
             System.out.println("BindException occurred when attempting to bind to port " + FilmService.PORT);
             System.out.println(e.getMessage());
@@ -89,6 +90,71 @@ public class FilmServer {
             System.out.println(e.getMessage());
         }
 
+    }
+    public static void handleCase(ServerSocket listeningSocket) throws IOException {
+        userManager = new UserManager();
+        filmManager = new FilmManager();
+        serverState = true;
+        while (serverState) {
+            Socket dataSocket = listeningSocket.accept();
+            try (Scanner input = new Scanner(dataSocket.getInputStream());
+                 PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
+                user = null;
+                state = true;
+                while (state) {
+                    String message = input.nextLine();
+                    System.out.println("server received: " + message);
+                    String[] components = message.split(FilmService.DELIMITER);
+                    System.out.println("length is " + components.length);
+                    String response = FilmService.DEFAULT_RESPONSE;
+                    if (components.length > 0) {
+                        String action = components[0];
+                        switch (action) {
+                            case (FilmService.REGISTER_REQUEST):
+                                response = register(components);
+                                break;
+                            case (FilmService.LOGIN_REQUEST):
+                                response = login(components);
+                                break;
+                            case (FilmService.LOGOUT_REQUEST):
+                                response = logout();
+                                break;
+                            case (FilmService.RATE_FILM_REQUEST):
+                                response = rateFilm(components);
+                                break;
+                            case (FilmService.SEARCH_FILM_REQUEST):
+                                response = searchFilm(components);
+                                break;
+                            case (FilmService.SEARCH_FILM_BY_GENRE_REQUEST):
+                                response = searchByGenre(components);
+                                break;
+                            case (FilmService.ADD_FILM_REQUEST):
+                                response = addFilm(components);
+                                break;
+                            case (FilmService.REMOVE_FILM_REQUEST):
+                                response = removeFilm(components);
+                                break;
+                            case (FilmService.EXIT_REQUEST):
+                                response = exit();
+                                break;
+                            case (FilmService.SHUTDOWN_REQUEST):
+                                response = shutdownServer();
+                                break;
+
+                        }
+                    } else {
+                        System.out.println("Invalid details");
+                    }
+                    output.println(response);
+                    output.flush();
+
+                }
+
+            } catch (IOException e) {
+                System.out.println("IOException occurred on server socket");
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static String register(String[] components) {
@@ -204,10 +270,7 @@ public class FilmServer {
         if (components.length == 2) {
             ArrayList<Film> filmsByGenre = filmManager.searchByGenre(components[1]);
             if (!filmsByGenre.isEmpty()) {
-                response = "";
-                for (Film film : filmsByGenre) {
-                    response = response + "*" + film.getTitle() + FilmService.DELIMITER + film.getGenre() + FilmService.DELIMITER + film.getTotalRatings() + FilmService.DELIMITER + film.getNumberOfRaters();
-                }
+                   response=filmManager.encode(FilmService.filmDELIMITER,FilmService.DELIMITER,filmsByGenre);
 
             } else {
                 response = FilmService.NO_MATCH_FOUND;

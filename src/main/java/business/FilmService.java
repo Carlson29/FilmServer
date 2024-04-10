@@ -26,7 +26,6 @@ public class FilmService {
     public static final String SUCCESSFUL_ADD_FILM_RESPONSE = "ADDED";
     public static final String FAILED_ADD_FILM_RESPONSE = "EXISTS";
     public static final String INSUFFICIENT_PERMISSIONS_ADD_FILM_RESPONSE = "INSUFFICIENT_PERMISSIONS";
-    public static final String INSUFFICIENT_DETAILS_RESPONSE = "INSUFFICIENT DETAILS";
     public static final String REMOVE_FILM_REQUEST = "remove";
     public static final String SUCCESSFUL_REMOVE_FILM_RESPONSE = "REMOVED";
     public static final String FAILED_REMOVE_FILM_RESPONSE = "NOT_FOUND";
@@ -38,6 +37,7 @@ public class FilmService {
     public static final String SUCCESSFUL_SHUTDOWN_RESPONSE = "SHUTTING_DOWN";
     public static final String INSUFFICIENT_PERMISSIONS_SHUTDOWN_RESPONSE = "INSUFFICIENT_PERMISSIONS";
     public static final String DELIMITER = "%%";
+    public static final String filmDELIMITER = "~~";
 
 
 }

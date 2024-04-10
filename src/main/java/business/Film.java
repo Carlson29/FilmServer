@@ -2,14 +2,15 @@ package business;
 
 import java.util.Objects;
 
-public class Film implements Comparable <Film> {
- private String title;
- private String genre;
- private double totalRatings;
- private int numberOfRaters;
+public class Film implements Comparable<Film> {
+    private String title;
+    private String genre;
+    private double totalRatings;
+    private int numberOfRaters;
 
     public Film() {
     }
+
     public Film(String title, String genre) {
         this.title = title;
         this.genre = genre;
@@ -79,21 +80,26 @@ public class Film implements Comparable <Film> {
                 '}';
     }
 
-    public String encode(String delimiter){
+    public String encode(String delimiter) {
         return this.title + delimiter + this.genre + delimiter + this.totalRatings + delimiter + this.numberOfRaters;
     }
 
-    public static Film decode(String encoded, String delimiter){
-        String [] components  = encoded.split(delimiter);
-        if(components.length != 4){
+    public static Film decode(String encoded, String delimiter) {
+        String[] components = encoded.split(delimiter);
+        Film f = null;
+        if (components.length != 4) {
             return null;
         }
-
-        return new Film(components[0], components[1]);
+        try {
+            f = new Film(components[0], components[1], Integer.parseInt(components[2]), Integer.parseInt(components[3]));
+        } catch (NumberFormatException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return f;
     }
 
     @Override
     public int compareTo(Film f) {
-      return title.compareTo(f.title);
+        return title.compareTo(f.title);
     }
 }

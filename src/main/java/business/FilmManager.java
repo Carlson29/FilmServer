@@ -103,4 +103,17 @@ public class FilmManager {
         return filmList;
     }
 
+    public String encode(String filmDelimiter, String filmComponentDelimiter, ArrayList<Film> films ){
+      if(films.isEmpty()){
+          return "";
+      }
+      String encoded= films.get(0).encode(filmComponentDelimiter);
+      for(int i=1; i<films.size(); i++){
+              encoded += filmDelimiter + films.get(i).encode(filmComponentDelimiter);
+      }
+      return encoded;
+    }
+
+
+
 }
