@@ -1,6 +1,7 @@
 package Client;
 
 import business.FilmService;
+import business.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,8 @@ import java.util.Scanner;
 
 public class Client {
     private static boolean loggedIn;
+
+    private static User user = new User();
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
         boolean validClient = true;
@@ -54,9 +57,14 @@ public class Client {
                         loggedIn = false;
                         validSession = false;
                     }
-                    if (response.equals(FilmService.SUCCESSFUL_ADMIN_LOGIN) || response.equals(FilmService.SUCCESSFUL_USER_LOGIN)) {
+                    if ( response.equals(FilmService.SUCCESSFUL_USER_LOGIN)) {
                         loggedIn = true;
+                        user.setAdminStatus(1);
                     }
+                        if (response.equals(FilmService.SUCCESSFUL_ADMIN_LOGIN)) {
+                            loggedIn = true;
+                            user.setAdminStatus(2);
+                        }
                 }
                 }
 
@@ -84,7 +92,7 @@ public class Client {
 
         System.out.println("5) Search film by name");
         System.out.println("6) Search all film by genre");
-        if(loggedIn==true) {
+        if (loggedIn==true && user.getAdminStatus()==2) {
             System.out.println("7) Add a film");
             System.out.println("8) Remove a film");
             System.out.println("9) Shut down server");
@@ -155,7 +163,7 @@ public class Client {
                     request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
                     break;
                 case "7":
-                    if(loggedIn==true) {
+                    if(loggedIn==true  && user.getAdminStatus()==2) {
                         System.out.println("Add a film: ");
                         System.out.println("Enter title: ");
                         title = userInput.nextLine();
@@ -165,7 +173,7 @@ public class Client {
                     }
                     break;
                 case "8":
-                    if(loggedIn==true) {
+                    if(loggedIn==true  && user.getAdminStatus()==2) {
                         System.out.println("Remove a film: ");
                         System.out.println("Enter title: ");
                         title = userInput.nextLine();
@@ -173,7 +181,7 @@ public class Client {
                     }
                     break;
                 case "9":
-                    if(loggedIn==true) {
+                    if(loggedIn==true  && user.getAdminStatus()==2) {
                         System.out.println("Shut down server?");
                         request = FilmService.SHUTDOWN_REQUEST;
                     }
