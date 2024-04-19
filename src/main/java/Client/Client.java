@@ -1,5 +1,7 @@
 package Client;
 
+import business.Film;
+import business.FilmManager;
 import business.FilmService;
 import business.User;
 
@@ -8,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -46,7 +49,7 @@ public class Client {
                             // Receive message from server
                             String response = input.nextLine();
                             // Display result to user
-                            //System.out.println("Received from server: " + response);
+                            System.out.println("Received from server: " + response);
                             if (response.equals(FilmService.SUCCESSFUL_LOGOUT_RESPONSE)) {
                                 System.out.println("Logout success.");
                                 validSession = false;
@@ -121,11 +124,13 @@ public class Client {
                                 System.out.println("Sorry, you're insufficient permission.");
 
                             }
-                            if (choice.equalsIgnoreCase("5")) {
-                                System.out.println(response);
+                            if (choice.equalsIgnoreCase("5") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
+                                Film decoded = Film.decode(response, FilmService.DELIMITER);
+                                System.out.println(decoded);
                             }
-                            if (choice.equalsIgnoreCase("6")) {
-                                System.out.println(response);
+                            if (choice.equalsIgnoreCase("6") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
+                                ArrayList<Film> f = FilmManager.decode(FilmService.filmDELIMITER, FilmService.DELIMITER, response);
+                                System.out.println(f);
                             }
 
                         }

@@ -91,9 +91,10 @@ public class Film implements Comparable<Film> {
             return null;
         }
         try {
-            f = new Film(components[0], components[1], Integer.parseInt(components[2]), Integer.parseInt(components[3]));
+            Double dRating = Double.parseDouble(components[2]);
+            int rating= dRating.intValue();
+            f = new Film(components[0], components[1],rating , Integer.parseInt(components[3]));
         } catch (NumberFormatException ex) {
-            System.out.println(ex.getMessage());
         }
         return f;
     }

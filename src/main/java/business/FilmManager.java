@@ -103,7 +103,7 @@ public class FilmManager {
         return filmList;
     }
 
-    public String encode(String filmDelimiter, String filmComponentDelimiter, ArrayList<Film> films ){
+    public static String encode(String filmDelimiter, String filmComponentDelimiter, ArrayList<Film> films ){
       if(films.isEmpty()){
           return "";
       }
@@ -112,6 +112,28 @@ public class FilmManager {
               encoded += filmDelimiter + films.get(i).encode(filmComponentDelimiter);
       }
       return encoded;
+    }
+    public static ArrayList<Film> decode(String filmDelimiter, String filmComponentDelimiter, String encoded ){
+        ArrayList <Film> filtered = new ArrayList();
+        if(encoded== null){
+            return null;
+        }
+        String [] films= encoded.split(filmDelimiter);
+        for(int i=0; i<films.length; i++){
+          String [] film=  films[i].split(filmComponentDelimiter);
+          if(film.length==4) {
+              try {
+                  Double dRating = Double.parseDouble(film[2]);
+                 int rating= dRating.intValue();
+                  int raters =Integer.parseInt(film[3]);
+                  Film f = new Film(film[0],film[1],rating,raters);
+                  filtered.add(f);
+              }
+              catch(NumberFormatException ex){
+              }
+          }
+        }
+        return filtered;
     }
 
 
