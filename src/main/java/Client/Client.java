@@ -52,51 +52,48 @@ public class Client {
                             //System.out.println("Received from server: " + response);
 
                             //Register response
-                            if (response.equals(FilmService.SUCCESSFUL_REGISTRATION)) {
+                            if (choice.equalsIgnoreCase("1") && response.equals(FilmService.SUCCESSFUL_REGISTRATION)) {
                                 System.out.println("You're are successful register.");
                             }
-                            if (response.equals(FilmService.FAILED_REGISTRATION)) {
+                            if (choice.equalsIgnoreCase("1") && response.equals(FilmService.FAILED_REGISTRATION)) {
                                 System.out.println("Register failed, please try again.");
                             }
 
                             //Login response
-                            if (response.equals(FilmService.SUCCESSFUL_USER_LOGIN)) {
+                            if (choice.equalsIgnoreCase("2") && response.equals(FilmService.SUCCESSFUL_USER_LOGIN)) {
                                 System.out.println("Welcome back, login success as user.");
                                 loggedIn = true;
                                 user.setAdminStatus(1);
                             }
-                            if (response.equals(FilmService.SUCCESSFUL_ADMIN_LOGIN)) {
+                            if (choice.equalsIgnoreCase("2") && response.equals(FilmService.SUCCESSFUL_ADMIN_LOGIN)) {
                                 System.out.println("Welcome back, login success as admin.");
                                 loggedIn = true;
                                 user.setAdminStatus(2);
                             }
-                            if (response.equals(FilmService.FAILED_LOGIN)) {
+                            if (choice.equalsIgnoreCase("2") && response.equals(FilmService.FAILED_LOGIN)) {
                                 System.out.println("Login failed, please try again.");
                             }
 
                             //Logout response
-                            if (response.equals(FilmService.SUCCESSFUL_LOGOUT_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("3") && response.equals(FilmService.SUCCESSFUL_LOGOUT_RESPONSE)) {
                                 System.out.println("Logout success.");
                                 validSession = false;
                                 loggedIn = false;
                                 choice = "-1";
                             }
-                            if (response.equals(FilmService.FAILED_LOGOUT_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("3") && response.equals(FilmService.FAILED_LOGOUT_RESPONSE)) {
                                 System.out.println("Logout failed, please try again.");
                             }
 
                             //Rate film response
-                            if (response.equals(FilmService.SUCCESSFUL_RATE_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("4") && response.equals(FilmService.SUCCESSFUL_RATE_FILM_RESPONSE)) {
                                 System.out.println("Thank you for rating this film.");
                             }
-                            if (response.equals(FilmService.INVALID_RATING_SUPPLIED_RATE_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("4") && response.equals(FilmService.INVALID_RATING_SUPPLIED_RATE_FILM_RESPONSE)) {
                                 System.out.println("Please try again, rating is invalid.");
                             }
-                            if (response.equals(FilmService.NOT_LOGGED_IN_RATE_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("4") && response.equals(FilmService.NOT_LOGGED_IN_RATE_FILM_RESPONSE)) {
                                 System.out.println("Please login to rate this film.");
-                            }
-                            if (response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE)) {
-                                System.out.println("Sorry, not able to rate this film because no match film.");
                             }
 
                             //Search film by title response
@@ -104,39 +101,37 @@ public class Client {
                                 Film decoded = Film.decode(response, FilmService.DELIMITER);
                                 System.out.println(decoded);
                             }
-                            if (response.equals(FilmService.NO_MATCH_FOUND)) {
-                                System.out.println("Please try again, no film match found.");
-                            }
 
                             //Search film by genre response
                             if (choice.equalsIgnoreCase("6") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
                                 ArrayList<Film> f = FilmManager.decode(FilmService.filmDELIMITER, FilmService.DELIMITER, response);
                                 System.out.println(f);
                             }
-                            if (response.equals(FilmService.NO_MATCH_FOUND)) {
-                                System.out.println("Please try again, no film match found.");
-                            }
 
                             //Add film response
-                            if (response.equals(FilmService.SUCCESSFUL_ADD_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("7") && response.equals(FilmService.SUCCESSFUL_ADD_FILM_RESPONSE)) {
                                 System.out.println("Film added success.");
                             }
-                            if (response.equals(FilmService.FAILED_ADD_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("7") && response.equals(FilmService.FAILED_ADD_FILM_RESPONSE)) {
                                 System.out.println("Film already exist.");
-                            }
-                            if (response.equals(FilmService.INSUFFICIENT_PERMISSIONS_ADD_FILM_RESPONSE)) {
-                                System.out.println("Sorry, you're insufficient permission.");
                             }
 
                             //Remove film response
-                            if (response.equals(FilmService.REMOVE_FILM_REQUEST)) {
+                            if (choice.equalsIgnoreCase("8") && response.equals(FilmService.SUCCESSFUL_REMOVE_FILM_RESPONSE)) {
                                 System.out.println("Remove film success.");
                             }
-                            if (response.equals(FilmService.FAILED_REMOVE_FILM_RESPONSE)) {
+                            if (choice.equalsIgnoreCase("8") && response.equals(FilmService.FAILED_REMOVE_FILM_RESPONSE)) {
                                 System.out.println("Remove film failed because film not founded.");
                             }
+
+                            //Insufficient permission response for add, remove film and shut down server
                             if (response.equals(FilmService.INSUFFICIENT_PERMISSIONS_REMOVE_FILM_RESPONSE)) {
                                 System.out.println("Sorry, you're insufficient permission.");
+                            }
+
+                            //No film match found response for rate a film and search film by title and genre
+                            if (response.equals(FilmService.NO_MATCH_FOUND)) {
+                                System.out.println("Please try again, no film match found.");
                             }
 
                             //Exit response
@@ -146,15 +141,12 @@ public class Client {
                                 validSession = false;
                             }
 
-                            //Shut  down response
+                            //Shut down response
                             if (response.equals(FilmService.SUCCESSFUL_SHUTDOWN_RESPONSE)) {
                                 System.out.println("You're successful shutdown server.");
                                 loggedIn = false;
                                 validSession = false;
                                 validClient = false;
-                            }
-                            if (response.equals(FilmService.INSUFFICIENT_PERMISSIONS_SHUTDOWN_RESPONSE)) {
-                                System.out.println("Sorry, you're insufficient permission.");
                             }
 
                             //Invalid request response

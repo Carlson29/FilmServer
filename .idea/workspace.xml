@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Menu able show different choice to user and admin">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="Done Client friendly response">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
     </list>
@@ -158,7 +157,8 @@
       <workItem from="1712757222402" duration="2765000" />
       <workItem from="1713435345494" duration="8903000" />
       <workItem from="1713446872715" duration="1089000" />
-      <workItem from="1713539688213" duration="4321000" />
+      <workItem from="1713539688213" duration="6138000" />
+      <workItem from="1713549636045" duration="4624000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -256,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713441334148</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Done Client friendly response">
+      <option name="closed" value="true" />
+      <created>1713545599198</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713545599198</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +282,7 @@
     <MESSAGE value=" add more in generateRequest to work in client" />
     <MESSAGE value="Add more clear instruction for client to enter input" />
     <MESSAGE value="Menu able show different choice to user and admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu able show different choice to user and admin" />
+    <MESSAGE value="Done Client friendly response" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done Client friendly response" />
   </component>
 </project>
