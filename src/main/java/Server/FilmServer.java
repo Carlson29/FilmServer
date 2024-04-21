@@ -105,7 +105,6 @@ public class FilmServer {
                     String message = input.nextLine();
                     System.out.println("server received: " + message);
                     String[] components = message.split(FilmService.DELIMITER);
-                    System.out.println("length is " + components.length);
                     String response = FilmService.DEFAULT_RESPONSE;
                     if (components.length > 0) {
                         String action = components[0];

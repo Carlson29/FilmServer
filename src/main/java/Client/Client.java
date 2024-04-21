@@ -178,7 +178,7 @@ public class Client {
 
         System.out.println("5) Search film by name");
         System.out.println("6) Search all film by genre");
-        if (loggedIn == true) {
+        if (loggedIn == true && user.getAdminStatus()==2) {
             System.out.println("7) Add a film");
             System.out.println("8) Remove a film");
             System.out.println("9) Shut down server");
@@ -249,7 +249,7 @@ public class Client {
                     request = FilmService.SEARCH_FILM_BY_GENRE_REQUEST + FilmService.DELIMITER + genre;
                     break;
                 case "7":
-                    if (loggedIn == true) {
+                    if (loggedIn == true && user.getAdminStatus()==2) {
                         System.out.println("Add a film: ");
                         System.out.println("Enter title: ");
                         title = userInput.nextLine();
@@ -259,7 +259,7 @@ public class Client {
                     }
                     break;
                 case "8":
-                    if (loggedIn == true) {
+                    if (loggedIn == true && user.getAdminStatus()==2) {
                         System.out.println("Remove a film: ");
                         System.out.println("Enter title: ");
                         title = userInput.nextLine();
@@ -267,7 +267,7 @@ public class Client {
                     }
                     break;
                 case "9":
-                    if (loggedIn == true) {
+                    if (loggedIn == true && user.getAdminStatus()==2) {
                         System.out.println("Shut down server?");
                         request = FilmService.SHUTDOWN_REQUEST;
                     }
