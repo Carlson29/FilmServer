@@ -97,62 +97,64 @@ public class FilmServer {
         serverState = true;
         while (serverState) {
             Socket dataSocket = listeningSocket.accept();
-            try (Scanner input = new Scanner(dataSocket.getInputStream());
-                 PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
-                user = null;
-                state = true;
-                while (state) {
-                    String message = input.nextLine();
-                    System.out.println("server received: " + message);
-                    String[] components = message.split(FilmService.DELIMITER);
-                    String response = FilmService.DEFAULT_RESPONSE;
-                    if (components.length > 0) {
-                        String action = components[0];
-                        switch (action) {
-                            case (FilmService.REGISTER_REQUEST):
-                                response = register(components);
-                                break;
-                            case (FilmService.LOGIN_REQUEST):
-                                response = login(components);
-                                break;
-                            case (FilmService.LOGOUT_REQUEST):
-                                response = logout();
-                                break;
-                            case (FilmService.RATE_FILM_REQUEST):
-                                response = rateFilm(components);
-                                break;
-                            case (FilmService.SEARCH_FILM_REQUEST):
-                                response = searchFilm(components);
-                                break;
-                            case (FilmService.SEARCH_FILM_BY_GENRE_REQUEST):
-                                response = searchByGenre(components);
-                                break;
-                            case (FilmService.ADD_FILM_REQUEST):
-                                response = addFilm(components);
-                                break;
-                            case (FilmService.REMOVE_FILM_REQUEST):
-                                response = removeFilm(components);
-                                break;
-                            case (FilmService.EXIT_REQUEST):
-                                response = exit();
-                                break;
-                            case (FilmService.SHUTDOWN_REQUEST):
-                                response = shutdownServer();
-                                break;
+            handleClient(dataSocket);
+        }
+    }
 
-                        }
-                    } else {
-                        System.out.println("Invalid details");
+    public static void handleClient(Socket dataSocket) throws IOException {
+        try (Scanner input = new Scanner(dataSocket.getInputStream());
+             PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
+            user = null;
+            state = true;
+            while (state) {
+                String message = input.nextLine();
+                System.out.println("server received: " + message);
+                String[] components = message.split(FilmService.DELIMITER);
+                System.out.println("length is " + components.length);
+                String response = FilmService.DEFAULT_RESPONSE;
+                if (components.length > 0) {
+                    String action = components[0];
+                    switch (action) {
+                        case (FilmService.REGISTER_REQUEST):
+                            response = register(components);
+                            break;
+                        case (FilmService.LOGIN_REQUEST):
+                            response = login(components);
+                            break;
+                        case (FilmService.LOGOUT_REQUEST):
+                            response = logout();
+                            break;
+                        case (FilmService.RATE_FILM_REQUEST):
+                            response = rateFilm(components);
+                            break;
+                        case (FilmService.SEARCH_FILM_REQUEST):
+                            response = searchFilm(components);
+                            break;
+                        case (FilmService.SEARCH_FILM_BY_GENRE_REQUEST):
+                            response = searchByGenre(components);
+                            break;
+                        case (FilmService.ADD_FILM_REQUEST):
+                            response = addFilm(components);
+                            break;
+                        case (FilmService.REMOVE_FILM_REQUEST):
+                            response = removeFilm(components);
+                            break;
+                        case (FilmService.EXIT_REQUEST):
+                            response = exit();
+                            break;
+                        case (FilmService.SHUTDOWN_REQUEST):
+                            response = shutdownServer();
+                            break;
                     }
-                    output.println(response);
-                    output.flush();
-
+                } else {
+                    System.out.println("Invalid details");
                 }
-
-            } catch (IOException e) {
-                System.out.println("IOException occurred on server socket");
-                System.out.println(e.getMessage());
+                output.println(response);
+                output.flush();
             }
+        } catch (IOException e) {
+            System.out.println("IOException occurred on server socket");
+            System.out.println(e.getMessage());
         }
     }
 
