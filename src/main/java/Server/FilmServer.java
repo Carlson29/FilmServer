@@ -11,16 +11,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FilmServer {
-    private static UserManager userManager;
+    private static  UserManager userManager;
     private static FilmManager filmManager;
-    private static User user;
+    private  User user;
     private static boolean serverState;
-    private static boolean state;
+
 
     public static void main(String[] args)  {
 
         try (ServerSocket listeningSocket = new ServerSocket(FilmService.PORT)) {
-            handleCase(listeningSocket);
+            Socket dataSocket = listeningSocket.accept();
+        filmManager = new FilmManager();
+        userManager = new UserManager();
+        serverState=true;
+            while (serverState) {
+                ClientHandler clientHandler = new ClientHandler(dataSocket, filmManager, userManager);
+                Thread wrapper = new Thread(clientHandler);
+                wrapper.start();
+            }
+
+            // handleCase(listeningSocket);
           /*  userManager = new UserManager();
             filmManager = new FilmManager();
             serverState = true;
@@ -91,7 +101,7 @@ public class FilmServer {
         }
 
     }
-    public static void handleCase(ServerSocket listeningSocket) throws IOException {
+   /* public static void handleCase(ServerSocket listeningSocket) throws IOException {
         userManager = new UserManager();
         filmManager = new FilmManager();
         serverState = true;
@@ -358,7 +368,7 @@ public class FilmServer {
             System.out.println("Not logged in");
         }
         return response;
-    }
+    }*/
     /*public static String [] split(){
 
     }*/

@@ -35,12 +35,13 @@ public class UserManager {
     public boolean addUser(String username, String password)
     {
         User user = new User(username,password);
-        if(usersList.contains(user)){
-            return false;
-        }
-        else{
-            usersList.add(user);
-            return true;
+        synchronized (usersList) {
+            if (usersList.contains(user)) {
+                return false;
+            } else {
+                usersList.add(user);
+                return true;
+            }
         }
     }
 
@@ -52,11 +53,11 @@ public class UserManager {
     public User searchByUsername(String username)
     {
         User user = null;
-        for(User u : usersList)
-        {
-            if(u.getUsername().equalsIgnoreCase(username))
-            {
-                user=u;
+        synchronized (usersList) {
+            for (User u : usersList) {
+                if (u.getUsername().equalsIgnoreCase(username)) {
+                    user = u;
+                }
             }
         }
         return user;

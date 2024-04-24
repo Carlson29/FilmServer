@@ -34,10 +34,12 @@ public class FilmManager {
         if (f == null) {
             throw new NullPointerException("film can't be null");
         }
+        synchronized (films) {
         if (!films.containsKey(f.getTitle())) {
             films.put(f.getTitle(), f);
             return true;
         }
+    }
         return false;
     }
 
@@ -63,15 +65,17 @@ public class FilmManager {
      * @return true if the film exist ,and it was successfully rated or false if the film doesn't exist
      **/
     public boolean rateFilm(String title, double rating) {
-        if (films.containsKey(title)) {
-            Film film = films.get(title);
-            double ratings = film.getTotalRatings() + rating;
-            film.setNumberOfRaters(film.getNumberOfRaters() + 1);
-            film.setTotalRatings(ratings / film.getNumberOfRaters());
-            films.put(title, film);
-            return true;
+        synchronized (films) {
+            if (films.containsKey(title)) {
+                Film film = films.get(title);
+                double ratings = film.getTotalRatings() + rating;
+                film.setNumberOfRaters(film.getNumberOfRaters() + 1);
+                film.setTotalRatings(ratings / film.getNumberOfRaters());
+                films.put(title, film);
+                return true;
+            }
+            return false;
         }
-        return false;
     }
 
     /**
@@ -82,8 +86,11 @@ public class FilmManager {
      **/
     public Film searchByTitle(String title) {
         Film f = null;
-        f = films.get(title);
+        synchronized (films) {
+            f = films.get(title);
+        }
         return f;
+
     }
 
     /**
@@ -94,9 +101,11 @@ public class FilmManager {
      **/
     public ArrayList<Film> searchByGenre(String genre) {
         ArrayList<Film> filmList = new ArrayList<>();
-        for (Map.Entry<String, Film> film : films.entrySet()) {
-            if (film.getValue().getGenre().equalsIgnoreCase(genre)) {
-                filmList.add(film.getValue());
+        synchronized (films) {
+            for (Map.Entry<String, Film> film : films.entrySet()) {
+                if (film.getValue().getGenre().equalsIgnoreCase(genre)) {
+                    filmList.add(film.getValue());
+                }
             }
         }
         Collections.sort(filmList, new FilmComparator());
