@@ -20,12 +20,13 @@ public class FilmServer {
     public static void main(String[] args)  {
 
         try (ServerSocket listeningSocket = new ServerSocket(FilmService.PORT)) {
-            Socket dataSocket = listeningSocket.accept();
+
         filmManager = new FilmManager();
         userManager = new UserManager();
         user=null;
         serverState=true;
             while (serverState) {
+                Socket dataSocket = listeningSocket.accept();
                 ClientHandler clientHandler = new ClientHandler(dataSocket, filmManager, userManager);
                 Thread wrapper = new Thread(clientHandler);
                 wrapper.start();

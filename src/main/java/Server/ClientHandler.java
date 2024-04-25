@@ -10,12 +10,12 @@ import java.util.Scanner;
 
 public class ClientHandler implements Runnable {
 
-    private Socket dataSocket;
+    private final Socket dataSocket;
     private  FilmManager filmManager;
     private static  User user;
     private  UserManager userManager;
     private  boolean serverState;
-    private static boolean state;
+    private  boolean state = true;
     public ClientHandler(Socket dataSocket, FilmManager filmManager, UserManager userManager) {
         this.dataSocket = dataSocket;
         this.filmManager = filmManager;
@@ -27,6 +27,7 @@ public class ClientHandler implements Runnable {
      */
     @Override
     public void run() {
+        try (dataSocket){
             try (Scanner input = new Scanner(dataSocket.getInputStream());
                  PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
                 while (state) {
@@ -79,6 +80,9 @@ public class ClientHandler implements Runnable {
                 System.out.println("IOException occurred on server socket");
                 System.out.println(e.getMessage());
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public  String register(String[] components) {
