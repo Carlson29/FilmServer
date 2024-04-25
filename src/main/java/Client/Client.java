@@ -20,10 +20,10 @@ public class Client {
     private static User user = new User();
 
     private static String choice = "-1";
+    private static boolean validClient = true;
 
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
-        boolean validClient = true;
         loggedIn = false;
         while (validClient) {
             // Requests a connection

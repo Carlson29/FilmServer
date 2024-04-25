@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class FilmServer {
     private static  UserManager userManager;
     private static FilmManager filmManager;
-    private  User user;
+    private static  User user;
     private static boolean serverState;
 
 
@@ -23,6 +23,7 @@ public class FilmServer {
             Socket dataSocket = listeningSocket.accept();
         filmManager = new FilmManager();
         userManager = new UserManager();
+        user=null;
         serverState=true;
             while (serverState) {
                 ClientHandler clientHandler = new ClientHandler(dataSocket, filmManager, userManager);
@@ -101,7 +102,24 @@ public class FilmServer {
         }
 
     }
-   /* public static void handleCase(ServerSocket listeningSocket) throws IOException {
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        FilmServer.user = user;
+    }
+
+    public static boolean isServerState() {
+        return serverState;
+    }
+
+    public static void setServerState(boolean serverState) {
+        FilmServer.serverState = serverState;
+    }
+
+    /* public static void handleCase(ServerSocket listeningSocket) throws IOException {
         userManager = new UserManager();
         filmManager = new FilmManager();
         serverState = true;

@@ -12,10 +12,10 @@ public class ClientHandler implements Runnable {
 
     private Socket dataSocket;
     private  FilmManager filmManager;
-    private  User user;
+    private static  User user;
     private  UserManager userManager;
     private  boolean serverState;
-    private  boolean state;
+    private static boolean state;
     public ClientHandler(Socket dataSocket, FilmManager filmManager, UserManager userManager) {
         this.dataSocket = dataSocket;
         this.filmManager = filmManager;
@@ -29,8 +29,6 @@ public class ClientHandler implements Runnable {
     public void run() {
             try (Scanner input = new Scanner(dataSocket.getInputStream());
                  PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
-                user = null;
-                state = true;
                 while (state) {
                     String message = input.nextLine();
                     System.out.println("server received: " + message);
@@ -116,6 +114,7 @@ public class ClientHandler implements Runnable {
             if (u != null) {
                 if (u.getPassword().equals(components[2])) {
                     user = u;
+//                    FilmServer.setUser(u);
                     if (u.getAdminStatus() == 1) {
                         response = FilmService.SUCCESSFUL_USER_LOGIN;
                     } else if (u.getAdminStatus() == 2) {
@@ -279,7 +278,7 @@ public class ClientHandler implements Runnable {
             if (user.getAdminStatus() == 2) {
                 user = null;
                 state = false;
-                serverState = false;
+               FilmServer.setServerState(false);
                 response = FilmService.SUCCESSFUL_SHUTDOWN_RESPONSE;
                 System.out.println("server shutting down...");
             } else {
