@@ -11,25 +11,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FilmServer {
-    private static  UserManager userManager;
+    private static UserManager userManager;
     private static FilmManager filmManager;
-    private static  User user;
-    private static boolean serverState;
+    private static boolean serverState = true;
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         try (ServerSocket listeningSocket = new ServerSocket(FilmService.PORT)) {
 
-        filmManager = new FilmManager();
-        userManager = new UserManager();
-        user=null;
-        serverState=true;
+            filmManager = new FilmManager();
+            userManager = new UserManager();
             while (serverState) {
                 Socket dataSocket = listeningSocket.accept();
                 ClientHandler clientHandler = new ClientHandler(dataSocket, filmManager, userManager);
                 Thread wrapper = new Thread(clientHandler);
                 wrapper.start();
+                serverState = ClientHandler.isServerState();
             }
 
             // handleCase(listeningSocket);
@@ -104,17 +102,6 @@ public class FilmServer {
 
     }
 
-    public static User getUser() {
-        return user;
-    }
-
-    public static void setUser(User user) {
-        FilmServer.user = user;
-    }
-
-    public static boolean isServerState() {
-        return serverState;
-    }
 
     public static void setServerState(boolean serverState) {
         FilmServer.serverState = serverState;

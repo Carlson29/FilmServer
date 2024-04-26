@@ -112,6 +112,25 @@ public class FilmManager {
         return filmList;
     }
 
+    /**
+     * Searches for all films that matches a particular genre
+     *
+     * @param rating the genre to search for
+     * @return an arraylist of films sorted in ascending order by the film titles
+     **/
+    public ArrayList<Film> searchByRating(int rating) {
+        ArrayList<Film> filmList = new ArrayList<>();
+        synchronized (films) {
+            for (Map.Entry<String, Film> film : films.entrySet()) {
+                if (film.getValue().getTotalRatings()==rating) {
+                    filmList.add(film.getValue());
+                }
+            }
+        }
+        Collections.sort(filmList, new FilmComparator());
+        return filmList;
+    }
+
     public static String encode(String filmDelimiter, String filmComponentDelimiter, ArrayList<Film> films ){
       if(films.isEmpty()){
           return "";

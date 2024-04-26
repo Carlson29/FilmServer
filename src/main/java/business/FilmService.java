@@ -17,6 +17,7 @@ public class FilmService {
     public static final String SEARCH_FILM_REQUEST = "searchByName";
     public static final String NO_MATCH_FOUND = "NO_MATCH_FOUND";
     public static final String SEARCH_FILM_BY_GENRE_REQUEST = "searchByGenre";
+    public static final String SEARCH_FILM_BY_RATING = "searchByRating";
     public static final String RATE_FILM_REQUEST = "rate";
     public static final String SUCCESSFUL_RATE_FILM_RESPONSE = "SUCCESS";
     public static final String INVALID_RATING_SUPPLIED_RATE_FILM_RESPONSE = "INVALID_RATING_SUPPLIED";

@@ -14,7 +14,7 @@ public class ClientHandler implements Runnable {
     private  FilmManager filmManager;
     private static  User user;
     private  UserManager userManager;
-    private  boolean serverState;
+    private static boolean serverState=true;
     private  boolean state = true;
     public ClientHandler(Socket dataSocket, FilmManager filmManager, UserManager userManager) {
         this.dataSocket = dataSocket;
@@ -69,6 +69,9 @@ public class ClientHandler implements Runnable {
                             case (FilmService.SHUTDOWN_REQUEST):
                                 response = shutdownServer();
                                 break;
+                            case (FilmService.SEARCH_FILM_BY_RATING):
+                                response = searchByRating(components);
+                                break;
                         }
                     } else {
                         System.out.println("Invalid details");
@@ -118,7 +121,6 @@ public class ClientHandler implements Runnable {
             if (u != null) {
                 if (u.getPassword().equals(components[2])) {
                     user = u;
-//                    FilmServer.setUser(u);
                     if (u.getAdminStatus() == 1) {
                         response = FilmService.SUCCESSFUL_USER_LOGIN;
                     } else if (u.getAdminStatus() == 2) {
@@ -215,6 +217,28 @@ public class ClientHandler implements Runnable {
         return response;
     }
 
+    public  String searchByRating(String[] components) {
+        String response = FilmService.DEFAULT_RESPONSE;
+        try{
+        if (components.length == 2) {
+            ArrayList<Film> filmsByGenre = filmManager.searchByRating(Integer.parseInt(components[1]));
+            if (!filmsByGenre.isEmpty()) {
+                response = filmManager.encode(FilmService.filmDELIMITER, FilmService.DELIMITER, filmsByGenre);
+
+            } else {
+                response = FilmService.NO_MATCH_FOUND;
+            }
+
+        } else {
+            System.out.println("Invalid details provided");
+        }}
+        catch(NumberFormatException ex){
+            System.out.println("Invalid rating inputed");
+        }
+
+        return response;
+    }
+
     public  String addFilm(String[] components) {
         String response = FilmService.DEFAULT_RESPONSE;
         if (components.length == 3) {
@@ -282,7 +306,8 @@ public class ClientHandler implements Runnable {
             if (user.getAdminStatus() == 2) {
                 user = null;
                 state = false;
-               FilmServer.setServerState(false);
+                serverState=false;
+                FilmServer.setServerState(false);
                 response = FilmService.SUCCESSFUL_SHUTDOWN_RESPONSE;
                 System.out.println("server shutting down...");
             } else {
@@ -293,5 +318,9 @@ public class ClientHandler implements Runnable {
             System.out.println("Not logged in");
         }
         return response;
+    }
+
+    public static boolean isServerState() {
+        return serverState;
     }
 }
