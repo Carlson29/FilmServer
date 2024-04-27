@@ -28,6 +28,7 @@ public class FilmServer {
                 Thread wrapper = new Thread(clientHandler);
                 wrapper.start();
                 serverState = ClientHandler.isServerState();
+
             }
 
             // handleCase(listeningSocket);

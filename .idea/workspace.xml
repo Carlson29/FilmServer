@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="update Client2 have search film by rate">
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="film rating small change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/business/FilmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/FilmManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +161,7 @@
       <workItem from="1713549636045" duration="5300000" />
       <workItem from="1713881391189" duration="345000" />
       <workItem from="1713882511342" duration="14161000" />
-      <workItem from="1714052725065" duration="8247000" />
+      <workItem from="1714052725065" duration="9098000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -307,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714183276806</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="film rating small change">
+      <option name="closed" value="true" />
+      <created>1714184031379</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714184031379</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +339,7 @@
     <MESSAGE value="add runnable and synchronized" />
     <MESSAGE value="thread working" />
     <MESSAGE value="update Client2 have search film by rate" />
-    <option name="LAST_COMMIT_MESSAGE" value="update Client2 have search film by rate" />
+    <MESSAGE value="film rating small change" />
+    <option name="LAST_COMMIT_MESSAGE" value="film rating small change" />
   </component>
 </project>
