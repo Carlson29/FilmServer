@@ -11,7 +11,7 @@ public class FilmManager {
     }
     private void bootstrapUserList()
     {
-        Film f1 = new Film("aaa", "fiction", 20, 4);
+        Film f1 = new Film("aaa", "fiction", 10, 4);
         Film f2 = new Film("bbb", "horror", 5, 4);
         Film f3 = new Film("ccc", "fiction", 5, 4);
         Film f4 = new Film("zzz", "fiction", 5, 4);

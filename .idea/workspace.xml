@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="thread working">
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="update Client2 have search film by rate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/business/FilmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/FilmManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
       <recent name="Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client2">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="FilmServer" />
@@ -135,9 +134,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.FilmServer" />
+        <item itemvalue="Application.Client2" />
         <item itemvalue="JUnit.UserManagerTest" />
         <item itemvalue="JUnit.UserManagerTest.searchByUsername_NotFound" />
       </list>
@@ -162,7 +161,7 @@
       <workItem from="1713549636045" duration="5300000" />
       <workItem from="1713881391189" duration="345000" />
       <workItem from="1713882511342" duration="14161000" />
-      <workItem from="1714052725065" duration="7479000" />
+      <workItem from="1714052725065" duration="8247000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -300,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714054751206</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update Client2 have search film by rate">
+      <option name="closed" value="true" />
+      <created>1714183276806</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1714183276806</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +330,7 @@
     <MESSAGE value="add method handleClient for server" />
     <MESSAGE value="add runnable and synchronized" />
     <MESSAGE value="thread working" />
-    <option name="LAST_COMMIT_MESSAGE" value="thread working" />
+    <MESSAGE value="update Client2 have search film by rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Client2 have search film by rate" />
   </component>
 </project>
