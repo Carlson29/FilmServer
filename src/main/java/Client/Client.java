@@ -102,7 +102,7 @@ public class Client {
                                 System.out.println(decoded);
                             }
 
-                            //Search film by  rating
+                            //Search film by rating
                             if (choice.equalsIgnoreCase("10") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
                                 ArrayList<Film> f = FilmManager.decode(FilmService.filmDELIMITER, FilmService.DELIMITER, response);
                                 System.out.println(f);

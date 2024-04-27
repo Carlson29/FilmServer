@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="add runnable and synchronized">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Client/Client2.java" afterDir="false" />
+    <list default="true" id="1b2f6f9e-f26c-4923-b15d-17652a88b178" name="Changes" comment="thread working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/FilmServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +57,9 @@
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="business" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Client" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Client2">
@@ -160,7 +162,7 @@
       <workItem from="1713549636045" duration="5300000" />
       <workItem from="1713881391189" duration="345000" />
       <workItem from="1713882511342" duration="14161000" />
-      <workItem from="1714052725065" duration="1933000" />
+      <workItem from="1714052725065" duration="7479000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository">
       <option name="closed" value="true" />
@@ -290,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713974559553</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="thread working">
+      <option name="closed" value="true" />
+      <created>1714054751206</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1714054751206</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +322,7 @@
     <MESSAGE value="Done final version client response" />
     <MESSAGE value="add method handleClient for server" />
     <MESSAGE value="add runnable and synchronized" />
-    <option name="LAST_COMMIT_MESSAGE" value="add runnable and synchronized" />
+    <MESSAGE value="thread working" />
+    <option name="LAST_COMMIT_MESSAGE" value="thread working" />
   </component>
 </project>

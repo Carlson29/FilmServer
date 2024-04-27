@@ -101,6 +101,12 @@ public class Client2 {
                                 System.out.println(decoded);
                             }
 
+                            //Search film by rating
+                            if (choice.equalsIgnoreCase("10") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
+                                ArrayList<Film> f = FilmManager.decode(FilmService.filmDELIMITER, FilmService.DELIMITER, response);
+                                System.out.println(f);
+                            }
+
                             //Search film by genre response
                             if (choice.equalsIgnoreCase("6") && response.equals(FilmService.NO_MATCH_FOUND_RATE_FILM_RESPONSE) == false) {
                                 ArrayList<Film> f = FilmManager.decode(FilmService.filmDELIMITER, FilmService.DELIMITER, response);
@@ -132,6 +138,7 @@ public class Client2 {
                             if (response.equals(FilmService.NO_MATCH_FOUND)) {
                                 System.out.println("Please try again, no film match found.");
                             }
+
 
                             //Exit response
                             if (response.equals(FilmService.EXIT_RESPONSE)) {
@@ -182,6 +189,7 @@ public class Client2 {
             System.out.println("8) Remove a film");
             System.out.println("9) Shut down server");
         }
+        System.out.println("10) Search all film by rating");
     }
 
     public static String generateRequest(Scanner userInput) {
@@ -270,6 +278,13 @@ public class Client2 {
                         System.out.println("Shut down server?");
                         request = FilmService.SHUTDOWN_REQUEST;
                     }
+                    break;
+
+                case "10":
+                    System.out.println("Search film by rating: ");
+                    System.out.println("Enter rating : ");
+                    rating = getValidRating(userInput, "Rating film from 1 to 10");;
+                    request = FilmService.SEARCH_FILM_BY_RATING + FilmService.DELIMITER + rating;
                     break;
                 default:
                     System.out.println("Please select one of the stated options!");
