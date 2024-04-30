@@ -32,9 +32,8 @@ public class ClientHandler implements Runnable {
                  PrintWriter output = new PrintWriter(dataSocket.getOutputStream())) {
                 while (state) {
                     String message = input.nextLine();
-                    System.out.println("server received: " + message);
+                    //System.out.println("server received: " + message);
                     String[] components = message.split(FilmService.DELIMITER);
-                    System.out.println("length is " + components.length);
                     String response = FilmService.DEFAULT_RESPONSE;
                     if (components.length > 0) {
                         String action = components[0];

@@ -113,9 +113,9 @@ public class FilmManager {
     }
 
     /**
-     * Searches for all films that matches a particular genre
+     * Searches for all films that matches a particular rating
      *
-     * @param rating the genre to search for
+     * @param rating the rating to search for
      * @return an arraylist of films sorted in ascending order by the film titles
      **/
     public ArrayList<Film> searchByRating(int rating) {

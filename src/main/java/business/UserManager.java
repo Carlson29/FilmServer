@@ -55,7 +55,7 @@ public class UserManager {
         User user = null;
         synchronized (usersList) {
             for (User u : usersList) {
-                if (u.getUsername().equalsIgnoreCase(username)) {
+                if (u.getUsername().equals(username)) {
                     user = u;
                 }
             }
