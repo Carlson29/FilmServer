@@ -293,7 +293,7 @@ public class Client2 {
                     if(shuttingDown==false) {
                         System.out.println("Search by rating: ");
                         System.out.println("Enter rating : ");
-                        rating = getValidRating(userInput, "Rating film from 1 to 10");
+                        rating = getValidRating(userInput, "Enter rating from 1 to 10 to search film");
                         request = FilmService.SEARCH_FILM_BY_RATING + FilmService.DELIMITER + rating;
                     }
                     break;
